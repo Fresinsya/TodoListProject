@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo, updateTodo } from '../redux/reducers/Todo-counter'
+import { addTodo, filterActive, filterAll, filterCompleted, updateTodo } from '../redux/reducers/Todo-counter'
 import ListTodo from './ListTodo'
 
 const InputTodo = () => {
-    const { todos, isEdit } = useSelector((state) => state.todos)
+    const { todos, isEdit, namaFilter } = useSelector((state) => state.todos)
     const [input, setInput] = useState('')
     const dispatch = useDispatch()
 
@@ -14,12 +14,22 @@ const InputTodo = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!input) {
+            return alert("input tidak boleh kosong")
+        }
         if (isEdit) {
             dispatch(updateTodo(input))
         } else {
             dispatch(addTodo(input))
         }
         setInput("")
+        if (namaFilter == "all") {
+            dispatch(filterAll())
+        } else if (namaFilter == "completed") {
+            dispatch(filterCompleted())
+        }else if (namaFilter == "active") {
+            dispatch(filterActive())
+        }
 
     }
 
@@ -37,7 +47,7 @@ const InputTodo = () => {
                     placeholder='Tambahkan Todo'
                     value={input}
                     onChange={handleAdd}
-                    className='border-2 items-center justify-center border-gray-400 rounded-xl p-2 m-3' />
+                    className='border-2 items-center justify-center border-gray-400 rounded-xl p-2 m-3'/>
                 <button type='submit' className='p-3 rounded-2xl h-12' onClick={handleSubmit} style={{ backgroundColor: '#113946', color: 'white' }}>{isEdit ? "edit" : "add"}</button>
 
             </div>

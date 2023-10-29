@@ -3,7 +3,9 @@ const inisialisasiState = {
         { id: 1, value: 'Belajar React', completed: false, isEdit: false },
         { id: 2, value: 'Belajar Redux', completed: true, isEdit: false },
     ],
-    isEdit: false
+    isEdit: false,
+    namaFilter: 'all',
+    hasilFilter: [],
 
 }
 
@@ -59,6 +61,26 @@ export default function todoReducer(state = inisialisasiState, action) {
                 isEdit: false
 
             }
+        case "filterAll":
+            return {
+                ...state,
+                namaFilter: action.payload,
+                hasilFilter: state.todos,
+
+            }
+        case "filterActive":
+            return {
+                ...state,
+                namaFilter: action.payload,
+                hasilFilter: state.todos.filter(todo => todo.completed === false)
+            }
+        
+        case "filterCompleted":
+            return {
+                ...state,
+                namaFilter: action.payload,
+                hasilFilter:state.todos.filter(todo => todo.completed === true)
+            }
 
         default:
             return state
@@ -98,5 +120,26 @@ export const selesai = (id) => {
     return {
         type: "checkbox",
         payload: id
+    }
+}
+
+export const filterAll = () => {
+    return {
+        type: "filterAll",
+        payload: "all"
+    }
+}
+
+export const filterActive = () => {
+    return {
+        type: "filterActive",
+        payload: "active"
+    }
+}
+
+export const filterCompleted = () => {
+    return {
+        type: "filterCompleted",
+        payload: "completed"
     }
 }
