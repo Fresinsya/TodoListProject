@@ -40,14 +40,14 @@ const InputTodo = () => {
 
     return (
         <div>
-            <h1 className='text-3xl text-center font-bold '>Todo List</h1>
-            <div className='flex justify-center items-center'>
+            <h1 className='text-3xl text-center font-bold my-2'>Todo List</h1>
+            <div className='flex justify-center items-center mt-5 mb-0'>
                 <input
                     type="text"
                     placeholder='Tambahkan Todo'
                     value={input}
                     onChange={handleAdd}
-                    className='border-2 items-center justify-center border-gray-400 rounded-xl p-2 m-3'/>
+                    className='border-2 items-center justify-center border-gray-400 rounded-xl p-2 px-4 m-3'/>
                 <button type='submit' className='p-3 rounded-2xl h-12' onClick={handleSubmit} style={{ backgroundColor: '#113946', color: 'white' }}>{isEdit ? "edit" : "add"}</button>
 
             </div>
