@@ -50,9 +50,9 @@ const ListTodo = ({ setInput }) => {
     return (
         <>
             <div className='flex justify-center items-center'>
-                <span className='border border-blue-950 text-white p-2 rounded-xl m-2 cursor-pointer' style={{ backgroundColor: '#213555' }} onClick={() => handleFilterAll()}>All</span>
-                <span className='border border-blue-950 text-white p-2 rounded-xl m-2 cursor-pointer' style={{ backgroundColor: '#213555' }} onClick={() => handleFilterComplate()}>Complate</span>
-                <span className='border border-blue-950 text-white p-2 rounded-xl m-2 cursor-pointer' style={{ backgroundColor: '#213555' }} onClick={() => handleFilterActive()}>Active</span>
+                <span className='border border-green-950 bg-green-800 text-white p-2 rounded-xl m-2 cursor-pointer hover:bg-green-950 ' onClick={() => handleFilterAll()}>All</span>
+                <span className='border border-green-950 bg-green-800 text-white p-2 rounded-xl m-2 cursor-pointer hover:bg-green-950 ' onClick={() => handleFilterComplate()}>Complate</span>
+                <span className='border border-green-950 bg-green-800 text-white p-2 rounded-xl m-2 cursor-pointer hover:bg-green-950 ' onClick={() => handleFilterActive()}>Active</span>
             </div>
             <div className='flex flex-col gap-3 m-4'>
 
